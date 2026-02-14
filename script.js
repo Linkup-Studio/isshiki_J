@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll-Triggered Mobile Bottom Nav
     const bottomNav = document.querySelector('.mobile-bottom-nav');
     if (bottomNav) {
+        // Force remove initially to be safe
+        bottomNav.classList.remove('is-visible');
+
         const toggleNav = () => {
             if (window.scrollY > 300) {
                 bottomNav.classList.add('is-visible');
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         window.addEventListener('scroll', toggleNav);
-        toggleNav(); // Run immediately on load
+        // Delay slightly to ensure layout is ready
+        setTimeout(toggleNav, 100);
     }
 });
