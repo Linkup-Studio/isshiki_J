@@ -626,9 +626,6 @@ img {
         right: 0;
         width: 100%;
 
-        /* DEBUG: Red border to confirm existence */
-        border: 5px solid red;
-
         z-index: 2147483647;
 
         box-sizing: border-box;

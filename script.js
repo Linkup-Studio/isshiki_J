@@ -44,20 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Should be visible by default (CSS).
             // We only HIDE it if we are at the very top.
 
+            // Should be visible by default (CSS).
+            // We only HIDE it if we are at the very top.
+
             // Hide if scrolled LESS than 50px
-            // DEBUG: Temporarily disabled hiding to prove existence
-            /*
             if (scrollTop < 50) {
                 bottomNav.classList.add('is-hidden');
             } else {
                 bottomNav.classList.remove('is-hidden');
-                // Ensure display is cleared in case inline style persists
-                bottomNav.style.display = '';
             }
-            */
-            // Always show for debug
-            bottomNav.classList.remove('is-hidden');
-            bottomNav.style.display = '';
         };
 
         // Listen on window
