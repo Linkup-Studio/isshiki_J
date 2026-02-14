@@ -619,17 +619,12 @@ img {
     .mobile-bottom-nav {
         display: flex;
         transform: translateY(100%);
-        opacity: 0;
-        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        pointer-events: none;
-        /* Prevent clicks when hidden */
+        transition: transform 0.3s ease-in-out;
+        /* Removed opacity to simplify visibility logic */
     }
 
     .mobile-bottom-nav.is-visible {
         transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-        /* Enable clicks when visible */
     }
 }
 

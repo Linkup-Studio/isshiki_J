@@ -33,32 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll-Triggered Mobile Bottom Nav (Throttled & Dynamic)
+    // Scroll-Triggered Mobile Bottom Nav (Simplest)
     const bottomNav = document.querySelector('.mobile-bottom-nav');
 
     if (bottomNav) {
-        let isTicking = false;
-
         const toggleNav = () => {
-            const scrollY = window.scrollY || document.documentElement.scrollTop;
-            const threshold = window.innerHeight * 0.3; // Show after scrolling 30% of screen height
+            // Support modern and legacy browsers
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            if (scrollY > threshold) {
+            // Show if scrolled more than 150px
+            if (scrollTop > 150) {
                 bottomNav.classList.add('is-visible');
             } else {
                 bottomNav.classList.remove('is-visible');
             }
-            isTicking = false;
         };
 
-        const onScroll = () => {
-            if (!isTicking) {
-                window.requestAnimationFrame(toggleNav);
-                isTicking = true;
-            }
-        };
-
-        window.addEventListener('scroll', onScroll, { passive: true });
+        // Standard listener (no throttling) to prevent async issues
+        window.addEventListener('scroll', toggleNav);
 
         // Initial check
         toggleNav();
