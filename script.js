@@ -32,22 +32,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    // Scroll-Triggered Mobile Bottom Nav
+    // Scroll-Triggered Mobile Bottom Nav (Intersection Observer)
     const bottomNav = document.querySelector('.mobile-bottom-nav');
-    if (bottomNav) {
-        // Force remove initially to be safe
+    const heroSection = document.querySelector('.hero');
+
+    if (bottomNav && heroSection) {
+        // Force remove initially
         bottomNav.classList.remove('is-visible');
 
-        const toggleNav = () => {
-            if (window.scrollY > 300) {
-                bottomNav.classList.add('is-visible');
-            } else {
-                bottomNav.classList.remove('is-visible');
-            }
-        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If hero is NOT intersecting (is out of view), show nav.
+                // We use isIntersecting: false -> show nav
+                if (!entry.isIntersecting) {
+                    bottomNav.classList.add('is-visible');
+                } else {
+                    bottomNav.classList.remove('is-visible');
+                }
+            });
+        }, {
+            root: null, // viewport
+            threshold: 0, // Trigger as soon as one pixel is visible/invisible
+            rootMargin: "-100px 0px 0px 0px" // Offset to trigger slightly before/after
+        });
 
-        window.addEventListener('scroll', toggleNav);
-        // Delay slightly to ensure layout is ready
-        setTimeout(toggleNav, 100);
+        observer.observe(heroSection);
     }
 });
