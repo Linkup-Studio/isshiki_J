@@ -618,13 +618,19 @@ img {
 @media (max-width: 768px) {
     .mobile-bottom-nav {
         display: flex;
-        transform: translateY(100%);
-        transition: transform 0.3s ease-in-out;
-        /* Removed opacity to simplify visibility logic */
+        bottom: -200px;
+        /* Hide off-screen using bottom */
+        transition: bottom 0.3s ease-in-out;
+        z-index: 9999;
+        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+        /* iPhone X+ support */
     }
 
     .mobile-bottom-nav.is-visible {
-        transform: translateY(0);
+        bottom: 0;
+        /* Slide up to proper position */
+        transform: none;
+        /* Ensure no transform conflict */
     }
 }
 
