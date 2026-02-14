@@ -33,37 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll-Triggered Mobile Bottom Nav (Sentinel Observer)
+    // Scroll-Triggered Mobile Bottom Nav (Legacy Robust)
     const bottomNav = document.querySelector('.mobile-bottom-nav');
-    // Using a sentinel (dummy element) allows precise tracking without relying on scroll events
-    const trigger = document.getElementById('scroll-trigger');
 
-    if (bottomNav && trigger) {
-        // Force initial state
-        bottomNav.classList.remove('is-visible');
+    if (bottomNav) {
+        const toggleNav = () => {
+            // Check all possible scroll properties for compatibility
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // Determine scrolling based on position
-                // If trigger is NOT intersecting and is ABOVE viewport (boundingClientRect.top < 0)
-                // it means we scrolled past it -> Show Nav
-                // Note: We need to check if we are 'below' the trigger.
+            // Show if scrolled more than 200px
+            if (scrollTop > 200) {
+                bottomNav.classList.add('is-visible');
+            } else {
+                bottomNav.classList.remove('is-visible');
+            }
+        };
 
-                // Simplified logic: 
-                // Using 100vh absolute positioned trigger. 
-                // If entry.boundingClientRect.top < 0, we are past the first screen.
+        // Listen on window
+        window.addEventListener('scroll', toggleNav);
 
-                if (entry.boundingClientRect.top < 0) {
-                    bottomNav.classList.add('is-visible');
-                } else {
-                    bottomNav.classList.remove('is-visible');
-                }
-            });
-        }, {
-            root: null,
-            threshold: 0,
-        });
+        // Also listen on touchmove for iOS 
+        window.addEventListener('touchmove', toggleNav);
 
-        observer.observe(trigger);
+        // Initial check
+        toggleNav();
     }
 });
