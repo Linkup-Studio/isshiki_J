@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Support modern and legacy browsers
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Show if scrolled more than 150px
-            if (scrollTop > 150) {
+            // Show if scrolled more than 50px
+            if (scrollTop > 50) {
                 bottomNav.classList.add('is-visible');
             } else {
                 bottomNav.classList.remove('is-visible');
