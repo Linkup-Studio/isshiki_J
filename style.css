@@ -555,10 +555,15 @@ img {
     }
 
     .section-title {
-        font-size: 1.3rem;
-        /* Reduced from 1.6rem to fit "地元一色で選ばれ続けています" on one line */
-        letter-spacing: 0.05em;
+        font-size: 1.1rem;
+        /* Aggressively reduced to 1.1rem (approx 18px) to guarantee single line on iPhone SE */
+        letter-spacing: 0;
         margin-bottom: 2rem;
+        width: 100%;
+        white-space: nowrap;
+        /* Force single line */
+        overflow: visible;
+        /* Allow slight spill if strictly needed (unlikely at this size) */
     }
 
     .section-lead {
