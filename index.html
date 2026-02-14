@@ -134,34 +134,69 @@
         <!-- Service & Price Section -->
         <section class="service section bg-gray">
             <div class="container">
-                <h2 class="section-title">サービスと料金</h2>
-                <p class="section-desc">料金は透明性を重視しています。<br>お見積りは無料ですので、お気軽にお問い合わせください。</p>
+                <h2 class="section-title">事業内容と料金体系</h2>
+                <p class="section-desc">浄化槽の管理は「点検」と「清掃」、そして「法定検査」の3点セットが必要です。<br>当店はこれら全てをワンストップでサポートします。</p>
 
-                <div class="price-box">
-                    <h3>浄化槽清掃（汲み取り）</h3>
-                    <p class="price-note">※法律で年1回以上の実施が義務付けられています。</p>
-                    <table class="price-table">
-                        <tr>
-                            <th>5人槽</th>
-                            <td>要お見積もり<span class="price-small">（他社からの切り替えも歓迎）</span></td>
-                        </tr>
-                        <tr>
-                            <th>7人槽</th>
-                            <td>要お見積もり</td>
-                        </tr>
-                        <tr>
-                            <th>10人槽〜</th>
-                            <td>別途ご相談</td>
-                        </tr>
-                    </table>
-                    <div class="service-flow">
-                        <h4>清掃の流れ</h4>
-                        <ol>
-                            <li>汚泥の引き抜き</li>
-                            <li>槽内の洗浄</li>
-                            <li>水張り・動作確認</li>
-                        </ol>
+                <div class="service-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+
+                    <!-- Service 1: Inspection -->
+                    <div class="service-card"
+                        style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                        <div class="service-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
+                        <h3>1. 保守点検（健康診断）</h3>
+                        <p class="service-role"
+                            style="color: var(--primary-color); font-weight: bold; margin-bottom: 1rem;">年3〜4回（義務）</p>
+                        <p>微生物が元気に働いているか、機械（ブロア）が故障していないかをチェックし、消毒薬を補充します。人間でいう「定期検診」です。</p>
+                        <ul style="text-align: left; margin-top: 1rem; padding-left: 1.2rem; font-size: 0.9rem;">
+                            <li>水質・装置の動作確認</li>
+                            <li>消毒剤の補充</li>
+                            <li>害虫駆除（殺虫プレート設置等）</li>
+                        </ul>
+                        <p class="price-tag"
+                            style="margin-top: 1.5rem; font-weight: bold; background: #f4f4f4; padding: 0.5rem; border-radius: 4px;">
+                            1回 4,000円〜</p>
                     </div>
+
+                    <!-- Service 2: Cleaning -->
+                    <div class="service-card"
+                        style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                        <div class="service-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">🚛</div>
+                        <h3>2. 浄化槽清掃（汲み取り）</h3>
+                        <p class="service-role"
+                            style="color: var(--primary-color); font-weight: bold; margin-bottom: 1rem;">年1回以上（義務）</p>
+                        <p>バキュームカーで底に溜まった泥（汚泥）を全量抜き取り、内部を洗浄します。人間でいう「外科手術」のようなリセット作業です。</p>
+                        <table class="price-table" style="margin-top: 1rem;">
+                            <tr>
+                                <th style="padding: 0.5rem; border-bottom: 1px solid #eee;">5人槽</th>
+                                <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">要お見積もり</td>
+                            </tr>
+                            <tr>
+                                <th style="padding: 0.5rem; border-bottom: 1px solid #eee;">7人槽</th>
+                                <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">要お見積もり</td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">※汚泥量や作業条件により変動します。</p>
+                    </div>
+
+                    <!-- Service 3: General Waste -->
+                    <div class="service-card"
+                        style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                        <div class="service-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">🗑️</div>
+                        <h3>3. し尿・ゴミ収集運搬</h3>
+                        <p class="service-role"
+                            style="color: var(--primary-color); font-weight: bold; margin-bottom: 1rem;">地域密着サービス</p>
+                        <p>浄化槽以外のトイレ（汲み取り式）や、家庭ごみ・事業系ごみの収集も行っています。</p>
+                        <ul style="text-align: left; margin-top: 1rem; padding-left: 1.2rem; font-size: 0.9rem;">
+                            <li>し尿汲み取り（仮設トイレ対応可）</li>
+                            <li>引越し時の大量ゴミ回収</li>
+                            <li>事業所から出る定期ゴミ回収</li>
+                        </ul>
+                        <p class="price-tag"
+                            style="margin-top: 1.5rem; font-weight: bold; background: #f4f4f4; padding: 0.5rem; border-radius: 4px;">
+                            お見積もり無料</p>
+                    </div>
+
                 </div>
             </div>
         </section>
