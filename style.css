@@ -617,7 +617,8 @@ img {
 
 @media (max-width: 768px) {
     .mobile-bottom-nav {
-        /* Display is handled by JS/Inline Style (defaults to none) */
+        /* Default: Visible (Safety First) */
+        display: flex;
 
         position: fixed;
         bottom: 0;
@@ -645,6 +646,11 @@ img {
         /* Ensure visible when flex layout is active */
         opacity: 1;
         pointer-events: auto;
+    }
+
+    /* Utility class to hide it */
+    .mobile-bottom-nav.is-hidden {
+        display: none !important;
     }
 }
 

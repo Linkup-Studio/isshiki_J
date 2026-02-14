@@ -41,12 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check all possible scroll properties for compatibility
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-            // Show if scrolled more than 100px
-            if (scrollTop > 100) {
-                // Direct style set - strongest override
-                bottomNav.style.display = 'flex';
+            // Should be visible by default (CSS).
+            // We only HIDE it if we are at the very top.
+
+            // Hide if scrolled LESS than 50px
+            if (scrollTop < 50) {
+                bottomNav.classList.add('is-hidden');
             } else {
-                bottomNav.style.display = 'none';
+                bottomNav.classList.remove('is-hidden');
+                // Ensure display is cleared in case inline style persists
+                bottomNav.style.display = '';
             }
         };
 
