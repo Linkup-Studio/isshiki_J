@@ -618,6 +618,14 @@ img {
 @media (max-width: 768px) {
     .mobile-bottom-nav {
         display: flex;
+        transform: translateY(100%);
+        /* Initially hide off-screen */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-bottom-nav.is-visible {
+        transform: translateY(0);
+        /* Slide in */
     }
 }
 

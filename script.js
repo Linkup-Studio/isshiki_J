@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     // FAQ Accordion
     const accordions = document.querySelectorAll('.accordion-header');
-    
+
     accordions.forEach(acc => {
-        acc.addEventListener('click', function() {
+        acc.addEventListener('click', function () {
             this.classList.toggle('active');
             const panel = this.nextElementSibling;
-            
+
             if (panel.style.display === 'block') {
                 panel.style.display = 'none';
                 this.textContent = this.textContent.replace('-', '+'); // Simple icon toggle logic if needed
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({
@@ -32,4 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // Scroll-Triggered Mobile Bottom Nav
+    const bottomNav = document.querySelector('.mobile-bottom-nav');
+    if (bottomNav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show after scrolling 300px
+                bottomNav.classList.add('is-visible');
+            } else {
+                bottomNav.classList.remove('is-visible');
+            }
+        });
+    }
 });
