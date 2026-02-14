@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // We only HIDE it if we are at the very top.
 
             // Hide if scrolled LESS than 50px
+            // DEBUG: Temporarily disabled hiding to prove existence
+            /*
             if (scrollTop < 50) {
                 bottomNav.classList.add('is-hidden');
             } else {
@@ -52,12 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ensure display is cleared in case inline style persists
                 bottomNav.style.display = '';
             }
+            */
+            // Always show for debug
+            bottomNav.classList.remove('is-hidden');
+            bottomNav.style.display = '';
         };
 
         // Listen on window
         window.addEventListener('scroll', toggleNav);
         window.addEventListener('resize', toggleNav); // Also check on resize
-        // Also listen on touchmove for iOS 
+        // Also listen on touchmove for iOS
         window.addEventListener('touchmove', toggleNav);
 
         // Initial check
