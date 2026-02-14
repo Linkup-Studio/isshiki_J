@@ -33,24 +33,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll-Triggered Mobile Bottom Nav (Simple & Robust)
+    // Scroll-Triggered Mobile Bottom Nav (Throttled & Dynamic)
     const bottomNav = document.querySelector('.mobile-bottom-nav');
 
     if (bottomNav) {
+        let isTicking = false;
+
         const toggleNav = () => {
             const scrollY = window.scrollY || document.documentElement.scrollTop;
-            // Lower threshold to 100px for quicker response
-            if (scrollY > 100) {
+            const threshold = window.innerHeight * 0.3; // Show after scrolling 30% of screen height
+
+            if (scrollY > threshold) {
                 bottomNav.classList.add('is-visible');
             } else {
                 bottomNav.classList.remove('is-visible');
             }
+            isTicking = false;
         };
 
-        // Use passive listener for performance
-        window.addEventListener('scroll', toggleNav, {
-            passive: true
-        });
+        const onScroll = () => {
+            if (!isTicking) {
+                window.requestAnimationFrame(toggleNav);
+                isTicking = true;
+            }
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
 
         // Initial check
         toggleNav();
