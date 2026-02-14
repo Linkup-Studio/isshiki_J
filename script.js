@@ -33,26 +33,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll-Triggered Mobile Bottom Nav (Simplest)
+    // Scroll-Triggered Mobile Bottom Nav (Sentinel Observer)
     const bottomNav = document.querySelector('.mobile-bottom-nav');
+    // Using a sentinel (dummy element) allows precise tracking without relying on scroll events
+    const trigger = document.getElementById('scroll-trigger');
 
-    if (bottomNav) {
-        const toggleNav = () => {
-            // Support modern and legacy browsers
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (bottomNav && trigger) {
+        // Force initial state
+        bottomNav.classList.remove('is-visible');
 
-            // Show if scrolled more than 50px
-            if (scrollTop > 50) {
-                bottomNav.classList.add('is-visible');
-            } else {
-                bottomNav.classList.remove('is-visible');
-            }
-        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Determine scrolling based on position
+                // If trigger is NOT intersecting and is ABOVE viewport (boundingClientRect.top < 0)
+                // it means we scrolled past it -> Show Nav
+                // Note: We need to check if we are 'below' the trigger.
 
-        // Standard listener (no throttling) to prevent async issues
-        window.addEventListener('scroll', toggleNav);
+                // Simplified logic: 
+                // Using 100vh absolute positioned trigger. 
+                // If entry.boundingClientRect.top < 0, we are past the first screen.
 
-        // Initial check
-        toggleNav();
+                if (entry.boundingClientRect.top < 0) {
+                    bottomNav.classList.add('is-visible');
+                } else {
+                    bottomNav.classList.remove('is-visible');
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0,
+        });
+
+        observer.observe(trigger);
     }
 });

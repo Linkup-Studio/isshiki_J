@@ -617,39 +617,43 @@ img {
 
 @media (max-width: 768px) {
     .mobile-bottom-nav {
-        display: none;
-        /* Hidden by default - No animation for stability */
-
+        display: flex;
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
         width: 100%;
 
+        /* Default: Hidden */
+        transform: translateY(100%);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
         z-index: 2147483647;
 
         box-sizing: border-box;
         height: auto;
-        min-height: 80px;
-        /* Reduced slightly as we don't need to hide extra */
+        min-height: 100px;
 
-        padding-top: 15px;
+        padding-top: 20px;
         padding-left: 15px;
         padding-right: 15px;
 
-        /* Keep robust padding */
-        padding-bottom: 30px;
-        padding-bottom: calc(15px + env(safe-area-inset-bottom));
+        padding-bottom: 40px;
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
 
         align-items: flex-start;
         background: var(--white);
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        /* Re-add shadow for pop-in look */
     }
 
     .mobile-bottom-nav.is-visible {
-        display: flex;
-        /* Show when class is added */
+        /* Visible */
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 
