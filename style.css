@@ -240,12 +240,16 @@ img {
 }
 
 .text-highlight {
-    color: var(--accent-color);
+    color: var(--primary-color);
+    /* Darker blue for better contrast on white */
     background: rgba(255, 255, 255, 0.95);
     padding: 2px 12px;
     border-radius: 2px;
     /* Sharper corners */
     margin: 0 5px;
+    text-shadow: none;
+    /* Remove shadow to prevent blurriness */
+    font-weight: 700;
 }
 
 .hero-sub {
