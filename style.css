@@ -619,18 +619,21 @@ img {
     .mobile-bottom-nav {
         display: flex;
         bottom: -200px;
-        /* Hide off-screen using bottom */
         transition: bottom 0.3s ease-in-out;
         z-index: 9999;
+        /* Ensure safe area is handled strictly as padding */
+        padding-top: 10px;
         padding-bottom: calc(10px + env(safe-area-inset-bottom));
-        /* iPhone X+ support */
+        padding-left: 15px;
+        padding-right: 15px;
+        align-items: stretch;
+        /* Stretch buttons to fit content area if needed, or default */
+        height: auto;
     }
 
     .mobile-bottom-nav.is-visible {
         bottom: 0;
-        /* Slide up to proper position */
         transform: none;
-        /* Ensure no transform conflict */
     }
 }
 
