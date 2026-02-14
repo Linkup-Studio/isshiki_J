@@ -621,14 +621,26 @@ img {
         bottom: -200px;
         transition: bottom 0.3s ease-in-out;
         z-index: 9999;
-        /* Ensure safe area is handled strictly as padding */
-        padding-top: 10px;
-        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+
+        /* Layout & Sizing */
+        box-sizing: border-box;
+        /* Critical for padding to work with width 100% */
+        width: 100%;
+        height: auto;
+
+        /* Padding / Spacing */
+        padding-top: 15px;
+        /* Increase top space slightly */
         padding-left: 15px;
         padding-right: 15px;
+
+        /* Safe Area Logic with Fallbacks */
+        padding-bottom: 25px;
+        /* Fallback for older devices */
+        padding-bottom: calc(15px + env(safe-area-inset-bottom));
+        /* Full support */
+
         align-items: stretch;
-        /* Stretch buttons to fit content area if needed, or default */
-        height: auto;
     }
 
     .mobile-bottom-nav.is-visible {
