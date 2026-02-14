@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll-Triggered Mobile Bottom Nav (Legacy Robust)
+    // Scroll-Triggered Mobile Bottom Nav (Direct Style Manipulation)
     const bottomNav = document.querySelector('.mobile-bottom-nav');
 
     if (bottomNav) {
@@ -41,17 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check all possible scroll properties for compatibility
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-            // Show if scrolled more than 200px
-            if (scrollTop > 200) {
-                bottomNav.classList.add('is-visible');
+            // Show if scrolled more than 100px
+            if (scrollTop > 100) {
+                // Direct style set - strongest override
+                bottomNav.style.display = 'flex';
             } else {
-                bottomNav.classList.remove('is-visible');
+                bottomNav.style.display = 'none';
             }
         };
 
         // Listen on window
         window.addEventListener('scroll', toggleNav);
-
+        window.addEventListener('resize', toggleNav); // Also check on resize
         // Also listen on touchmove for iOS 
         window.addEventListener('touchmove', toggleNav);
 
