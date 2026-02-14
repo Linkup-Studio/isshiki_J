@@ -555,8 +555,10 @@ img {
     }
 
     .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        /* Reduced from 1.6rem to fit "地元一色で選ばれ続けています" on one line */
+        letter-spacing: 0.05em;
+        margin-bottom: 2rem;
     }
 
     .section-lead {
