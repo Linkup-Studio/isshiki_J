@@ -619,13 +619,15 @@ img {
     .mobile-bottom-nav {
         display: flex;
         transform: translateY(100%);
-        /* Initially hide off-screen */
-        transition: transform 0.3s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
 
     .mobile-bottom-nav.is-visible {
         transform: translateY(0);
-        /* Slide in */
+        opacity: 1;
+        visibility: visible;
     }
 }
 

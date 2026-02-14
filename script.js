@@ -35,12 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll-Triggered Mobile Bottom Nav
     const bottomNav = document.querySelector('.mobile-bottom-nav');
     if (bottomNav) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) { // Show after scrolling 300px
+        const toggleNav = () => {
+            if (window.scrollY > 300) {
                 bottomNav.classList.add('is-visible');
             } else {
                 bottomNav.classList.remove('is-visible');
             }
-        });
+        };
+
+        window.addEventListener('scroll', toggleNav);
+        toggleNav(); // Run immediately on load
     }
 });
